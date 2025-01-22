@@ -6,7 +6,7 @@ import backend.academy.flame.MultiThreadFlame
 import backend.academy.flame.SingleThreadFlame
 import backend.academy.image.ImageSaver
 import backend.academy.image.drawer.ImageSettings
-import backend.academy.image.drawer.MultiThreadDrawer
+import backend.academy.backend.academy.image.drawer.MultiThreadDrawer
 import backend.academy.image.drawer.SingleThreadDrawer
 import backend.academy.pixel.Pixels
 import backend.academy.settings.FlameSettingsAsker

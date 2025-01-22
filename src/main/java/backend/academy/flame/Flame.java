@@ -6,17 +6,21 @@ import backend.academy.function.ListOfFunctions;
 import backend.academy.pixel.Pixels;
 import backend.academy.point.Point;
 import backend.academy.variation.Variation;
+
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
-import lombok.RequiredArgsConstructor;
 
-@RequiredArgsConstructor
 public abstract class Flame {
     protected static final int SKIP_ITERATIONS_COUNT = 20;
     protected static final double GAMMA = 2.2;
     protected final ListOfFunctions listOfFunctions;
     protected final List<Variation> variations;
     protected final Pixels pixels;
+    public Flame(ListOfFunctions listOfFunctions, List<Variation> variations, Pixels pixels) {
+        this.listOfFunctions = listOfFunctions;
+        this.variations = variations;
+        this.pixels = pixels;
+    }
 
     /**
      * Отрендерить фрактал
@@ -39,6 +43,7 @@ public abstract class Flame {
         var max = computeNormals(normals);
         if (max != 0) {
             applyGammaCorrection(normals, max);
+
         }
     }
 
@@ -91,7 +96,7 @@ public abstract class Flame {
         double newY = rotatedY + centerY;
 
         // Возвращаем новые индексы
-        return new int[] {(int) Math.round(newX), (int) Math.round(newY)};
+        return new int[]{(int) Math.round(newX), (int) Math.round(newY)};
     }
 
     /**
@@ -111,8 +116,8 @@ public abstract class Flame {
     protected void renderSample(int iteration, int symmetry) {
         var random = ThreadLocalRandom.current();
         var startPoint =
-            new Point(random.nextDouble(Pixels.MIN_X(), Pixels.MAX_X()),
-                random.nextDouble(Pixels.MIN_Y(), Pixels.MAX_Y()));
+                new Point(random.nextDouble(Pixels.MIN_X(), Pixels.MAX_X()),
+                        random.nextDouble(Pixels.MIN_Y(), Pixels.MAX_Y()));
         for (int i = 0; i < SKIP_ITERATIONS_COUNT; i++) {
             var function = listOfFunctions.getRandomFunction(random);
             startPoint = updateCoords(startPoint, function);

@@ -1,5 +1,6 @@
 package backend.academy.util;
 
+import backend.academy.flame.MultiThreadFlame;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 
 public class InputParser {

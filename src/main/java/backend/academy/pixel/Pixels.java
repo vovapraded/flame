@@ -14,6 +14,11 @@ public class Pixels {
     @Getter
     private static final double MAX_Y = 4.0;
     private final Pixel[][] pixels;
+
+    public Pixel[][] getPixels() {
+        return pixels;
+    }
+
     private final double scaleX;
     private final double scaleY;
 
